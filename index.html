@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A static enterprise AI coding-tool deployment readiness diagnostic built by Drew Sturgell as an independent portfolio project."
+    />
+    <title>Enterprise AI Deployment Readiness Diagnostic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Enterprise AI Deployment Readiness Diagnostic home">
+          <span class="brand-mark" aria-hidden="true">DS</span>
+          <span>
+            <strong>Drew Sturgell</strong>
+            <small>AI Deployment Leadership</small>
+          </span>
+        </a>
+        <div class="nav-links">
+          <a href="#diagnostic">Diagnostic</a>
+          <a href="#deployment-thinking">Approach</a>
+          <a href="#why-built">Why I Built This</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero-section" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Cursor application artifact</p>
+          <h1 id="page-title">Enterprise AI Deployment Readiness Diagnostic</h1>
+          <p class="hero-lede">
+            A practical assessment for leaders planning AI coding-tool adoption across enterprise engineering
+            organizations. The diagnostic focuses on adoption quality, workflow transformation, risk mitigation,
+            executive alignment, and measurable outcomes.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#diagnostic">Start diagnostic</a>
+            <a class="button button-secondary" href="#deployment-thinking">Read my approach</a>
+          </div>
+          <div class="hero-status-row" aria-label="Project emphasis">
+            <span>Business-side deployment</span>
+            <span>Developer workflow fluency</span>
+            <span>Account health lens</span>
+          </div>
+        </div>
+
+        <aside class="deployment-panel" aria-label="Deployment operating model">
+          <div class="panel-topline">
+            <span>Deployment operating model</span>
+            <span>Independent project</span>
+          </div>
+          <div class="deployment-map" aria-hidden="true">
+            <span class="map-route route-a"></span>
+            <span class="map-route route-b"></span>
+            <span class="map-route route-c"></span>
+
+            <div class="map-node node-sponsor">
+              <span>01</span>
+              <strong>Executive sponsor</strong>
+              <small>Outcome narrative</small>
+            </div>
+            <div class="map-node node-dev">
+              <span>02</span>
+              <strong>Developers</strong>
+              <small>Trust and workflow fit</small>
+            </div>
+            <div class="map-node node-sdlc">
+              <span>03</span>
+              <strong>SDLC</strong>
+              <small>Policy, review, release</small>
+            </div>
+            <div class="map-node node-field">
+              <span>04</span>
+              <strong>Field loop</strong>
+              <small>Sales, FE, Product</small>
+            </div>
+            <div class="map-node node-outcome">
+              <span>05</span>
+              <strong>Business outcomes</strong>
+              <small>Measured expansion</small>
+            </div>
+          </div>
+          <div class="positioning-note">
+            <h2>Business-side AI deployment leadership, getting hands-on with developer workflows.</h2>
+            <p>
+              Built to reflect enterprise sales, renewals, operations, AI adoption, account health, and
+              business-side SDLC participation. This is not an official Cursor tool.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section id="diagnostic" class="diagnostic-section" aria-labelledby="diagnostic-title">
+        <div class="section-heading">
+          <p class="eyebrow">Interactive assessment</p>
+          <h2 id="diagnostic-title">Readiness diagnostic</h2>
+          <p>
+            Select the current state of an enterprise AI coding-tool rollout. The output turns the inputs into an
+            executive-ready deployment view with risks, mitigations, enablement priorities, and an action plan.
+          </p>
+        </div>
+
+        <div class="workspace-grid">
+          <form id="diagnostic-form" class="diagnostic-form" aria-describedby="form-help">
+            <div class="form-titlebar">
+              <div>
+                <span>Account readiness intake</span>
+                <strong>Deployment system inputs</strong>
+              </div>
+              <p>Scoring rewards strong operating foundations and applies pressure when rollout complexity exceeds support capacity.</p>
+            </div>
+            <p id="form-help" class="form-help">
+              The model is intentionally simple enough for a live customer conversation, with outputs shaped for a
+              practical executive and field-team follow-up.
+            </p>
+
+            <fieldset>
+              <legend>Deployment context</legend>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="team-size">Engineering team size</label>
+                  <select id="team-size" name="teamSize" required>
+                    <option value="small">1 to 50 developers</option>
+                    <option value="mid">51 to 250 developers</option>
+                    <option value="large">251 to 1,000 developers</option>
+                    <option value="enterprise">1,000+ developers</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="ai-maturity">Current AI coding-tool maturity</label>
+                  <select id="ai-maturity" name="aiMaturity" required>
+                    <option value="1">No formal usage yet</option>
+                    <option value="2">Ad hoc individual usage</option>
+                    <option value="3">Guided team pilot</option>
+                    <option value="4">Standardized across multiple teams</option>
+                    <option value="5">Measured and embedded in workflows</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="rollout-stage">Rollout stage</label>
+                  <select id="rollout-stage" name="rolloutStage" required>
+                    <option value="exploration">Exploration</option>
+                    <option value="pilot">Pilot</option>
+                    <option value="expansion">Expansion</option>
+                    <option value="scale">Enterprise scale</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="top-blocker">Top blocker</label>
+                  <select id="top-blocker" name="topBlocker" required>
+                    <option value="security">Security</option>
+                    <option value="adoption">Adoption</option>
+                    <option value="workflow">Workflow fit</option>
+                    <option value="executive">Executive alignment</option>
+                    <option value="measurement">Measurement</option>
+                    <option value="enablement">Enablement</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Operating readiness</legend>
+              <div class="range-grid">
+                <div class="range-field">
+                  <label for="sponsor-strength">
+                    Executive sponsor strength
+                    <span id="sponsor-strength-value" class="range-value">3</span>
+                  </label>
+                  <input
+                    id="sponsor-strength"
+                    name="sponsorStrength"
+                    type="range"
+                    min="1"
+                    max="5"
+                    value="3"
+                    aria-describedby="sponsor-strength-scale"
+                  />
+                  <div id="sponsor-strength-scale" class="scale-labels">
+                    <span>Weak</span><span>Strong</span>
+                  </div>
+                </div>
+
+                <div class="range-field">
+                  <label for="enablement-maturity">
+                    Developer enablement maturity
+                    <span id="enablement-maturity-value" class="range-value">3</span>
+                  </label>
+                  <input
+                    id="enablement-maturity"
+                    name="enablementMaturity"
+                    type="range"
+                    min="1"
+                    max="5"
+                    value="3"
+                    aria-describedby="enablement-maturity-scale"
+                  />
+                  <div id="enablement-maturity-scale" class="scale-labels">
+                    <span>Reactive</span><span>Programmatic</span>
+                  </div>
+                </div>
+
+                <div class="range-field">
+                  <label for="sdlc-integration">
+                    SDLC integration maturity
+                    <span id="sdlc-integration-value" class="range-value">3</span>
+                  </label>
+                  <input
+                    id="sdlc-integration"
+                    name="sdlcIntegration"
+                    type="range"
+                    min="1"
+                    max="5"
+                    value="3"
+                    aria-describedby="sdlc-integration-scale"
+                  />
+                  <div id="sdlc-integration-scale" class="scale-labels">
+                    <span>Separate</span><span>Embedded</span>
+                  </div>
+                </div>
+
+                <div class="range-field">
+                  <label for="change-readiness">
+                    Change management readiness
+                    <span id="change-readiness-value" class="range-value">3</span>
+                  </label>
+                  <input
+                    id="change-readiness"
+                    name="changeReadiness"
+                    type="range"
+                    min="1"
+                    max="5"
+                    value="3"
+                    aria-describedby="change-readiness-scale"
+                  />
+                  <div id="change-readiness-scale" class="scale-labels">
+                    <span>Informal</span><span>Managed</span>
+                  </div>
+                </div>
+
+                <div class="range-field">
+                  <label for="measurement-discipline">
+                    Measurement discipline
+                    <span id="measurement-discipline-value" class="range-value">3</span>
+                  </label>
+                  <input
+                    id="measurement-discipline"
+                    name="measurementDiscipline"
+                    type="range"
+                    min="1"
+                    max="5"
+                    value="3"
+                    aria-describedby="measurement-discipline-scale"
+                  />
+                  <div id="measurement-discipline-scale" class="scale-labels">
+                    <span>Undefined</span><span>Outcome-linked</span>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">Generate deployment plan</button>
+              <button class="button button-ghost" type="reset">Reset</button>
+            </div>
+          </form>
+
+          <aside class="readiness-card" aria-label="Readiness model">
+            <p class="panel-kicker">Readiness model</p>
+            <h3>What the diagnostic weighs</h3>
+            <ul class="check-list">
+              <li>Executive sponsorship and business narrative</li>
+              <li>Developer trust, enablement, and workflow fit</li>
+              <li>SDLC integration with security and governance</li>
+              <li>Measurement discipline and account health signals</li>
+              <li>Rollout complexity against operating maturity</li>
+            </ul>
+            <p class="fine-print">
+              This is a strategy tool, not a benchmark. It helps shape a deployment conversation and identify the
+              next best motion.
+            </p>
+            <div class="partner-loop" aria-label="Cross-functional partnership loop">
+              <span>Sales</span>
+              <span>Field Eng</span>
+              <span>Product</span>
+              <span>Engineering</span>
+            </div>
+          </aside>
+        </div>
+
+        <section id="results" class="results-section" aria-live="polite" hidden>
+          <div class="results-header">
+            <div>
+              <p class="eyebrow">Deployment output</p>
+              <h2>Your readiness profile</h2>
+            </div>
+            <div class="score-block" aria-label="Overall readiness score" id="score-block">
+              <span id="score-value">0</span>
+              <small>overall readiness</small>
+            </div>
+          </div>
+
+          <div class="result-console">
+            <div class="maturity-band">
+              <div>
+                <span class="label">Deployment maturity level</span>
+                <strong id="maturity-level">Pilot Ready</strong>
+              </div>
+              <div>
+                <span class="label">Recommended rollout motion</span>
+                <strong id="rollout-motion">Structured pilot</strong>
+              </div>
+            </div>
+            <div class="readiness-bars" aria-label="Readiness factor scores">
+              <div class="bar-row">
+                <span>AI maturity</span>
+                <div class="bar-track"><span id="bar-ai"></span></div>
+              </div>
+              <div class="bar-row">
+                <span>Sponsor</span>
+                <div class="bar-track"><span id="bar-sponsor"></span></div>
+              </div>
+              <div class="bar-row">
+                <span>Enablement</span>
+                <div class="bar-track"><span id="bar-enablement"></span></div>
+              </div>
+              <div class="bar-row">
+                <span>SDLC fit</span>
+                <div class="bar-track"><span id="bar-sdlc"></span></div>
+              </div>
+              <div class="bar-row">
+                <span>Measurement</span>
+                <div class="bar-track"><span id="bar-measurement"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="account-strip" aria-label="Selected account context">
+            <div>
+              <span class="label">Team scale</span>
+              <strong id="result-team-size">1 to 50 developers</strong>
+            </div>
+            <div>
+              <span class="label">Rollout stage</span>
+              <strong id="result-rollout-stage">Exploration</strong>
+            </div>
+            <div>
+              <span class="label">Primary constraint</span>
+              <strong id="result-blocker">Security</strong>
+            </div>
+          </div>
+
+          <div class="results-grid">
+            <article class="result-card">
+              <h3>Top adoption risks</h3>
+              <ul id="risk-list"></ul>
+            </article>
+
+            <article class="result-card">
+              <h3>Risk mitigation plan</h3>
+              <ul id="mitigation-list"></ul>
+            </article>
+
+            <article class="result-card">
+              <h3>Success metrics</h3>
+              <ul id="metrics-list"></ul>
+            </article>
+
+            <article class="result-card">
+              <h3>Enablement plan</h3>
+              <ul id="enablement-list"></ul>
+            </article>
+
+            <article class="result-card result-card-wide">
+              <h3>Executive narrative</h3>
+              <p id="executive-narrative"></p>
+            </article>
+
+            <article class="result-card">
+              <h3>Expansion opportunities</h3>
+              <ul id="expansion-list"></ul>
+            </article>
+
+            <article class="result-card result-card-wide">
+              <h3>30/60/90-day action plan</h3>
+              <div class="timeline" id="timeline-plan"></div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section id="deployment-thinking" class="content-section" aria-labelledby="thinking-title">
+        <div class="section-heading">
+          <p class="eyebrow">Approach</p>
+          <h2 id="thinking-title">How I Think About AI Deployment</h2>
+        </div>
+        <div class="prose-panel">
+          <p>
+            AI deployment is not just tool access. Adoption quality depends on workflow fit, developer trust,
+            enablement, measurement, and executive alignment. The best deployments connect technical usage to
+            business outcomes. Successful rollout requires tight feedback loops between users, field teams, product,
+            and leadership.
+          </p>
+          <p>
+            In practice, that means treating an AI coding-tool deployment as both a customer transformation motion and
+            an operating system for learning. Sales, Field Engineering, Product, Engineering, Security, and customer
+            leadership need a shared view of the use cases, blockers, adoption signals, and moments where workflow
+            design either creates trust or introduces friction.
+          </p>
+        </div>
+      </section>
+
+      <section id="why-built" class="content-section content-section-alt" aria-labelledby="why-title">
+        <div class="section-heading">
+          <p class="eyebrow">Project rationale</p>
+          <h2 id="why-title">Why I Built This</h2>
+        </div>
+        <div class="prose-panel">
+          <p>
+            I built this as a lightweight project to demonstrate how I think about enterprise AI deployment and to get
+            closer to the developer workflow through hands-on AI-assisted development. My background is in enterprise
+            sales, renewals, operations, AI adoption, and business-side SDLC participation, and I am actively
+            developing my own app using AI tools.
+          </p>
+          <p>
+            The workflow behind this project is intentionally hands-on: VS Code, Claude, Codex, and vanilla app
+            development patterns, used from the perspective of a deployment leader who wants to understand how these
+            tools feel inside real developer work.
+          </p>
+          <p>
+            The project reflects how I would approach a customer conversation: diagnose readiness, identify adoption
+            risk, connect technical behavior to business outcomes, and turn the plan into a practical operating cadence.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Built by Drew Sturgell as an independent portfolio project. No proprietary employer or customer data is
+        included.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
