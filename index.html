@@ -1,461 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="A static enterprise AI coding-tool deployment readiness diagnostic built by Drew Sturgell as an independent portfolio project."
-    />
-    <title>Enterprise AI Deployment Readiness Diagnostic</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <nav class="nav-shell" aria-label="Primary navigation">
-        <a class="brand" href="#top" aria-label="Enterprise AI Deployment Readiness Diagnostic home">
-          <span class="brand-mark" aria-hidden="true">DS</span>
-          <span>
-            <strong>Drew Sturgell</strong>
-            <small>AI Deployment Leadership</small>
-          </span>
-        </a>
-        <div class="nav-links">
-          <a href="#diagnostic">Diagnostic</a>
-          <a href="#deployment-thinking">Approach</a>
-          <a href="#why-built">Why I Built This</a>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drew Sturgell — Regional Director, AI Deployment: a 90-day plan</title>
+<meta name="description" content="An independently prepared operating plan for the Regional Director, AI Deployment role at Cursor, by Drew Sturgell.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0C0D12;
+    --surface:#13151C;
+    --surface-2:#191C25;
+    --border:#262A36;
+    --border-soft:#1E212B;
+    --text:#E8EAF0;
+    --muted:#959BAB;
+    --faint:#5A6172;
+    --blue:#7AA2F7;
+    --green:#9ECE6A;
+    --amber:#E0AF68;
+    --magenta:#BB9AF7;
+    --mono:'JetBrains Mono','SF Mono',ui-monospace,monospace;
+    --sans:'Geist',ui-sans-serif,-apple-system,system-ui,sans-serif;
+    --maxw:1060px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(900px 500px at 78% -8%,rgba(122,162,247,.10),transparent 60%),radial-gradient(700px 500px at 5% 12%,rgba(187,154,247,.06),transparent 55%);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px;position:relative;z-index:1}
+  .mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em}
+  a{color:inherit}
+  .chrome{position:sticky;top:0;z-index:40;background:rgba(12,13,18,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .chrome-in{display:flex;align-items:center;gap:14px;max-width:var(--maxw);margin:0 auto;padding:11px 26px}
+  .dots{display:flex;gap:7px}
+  .dots i{width:11px;height:11px;border-radius:50%;display:block}
+  .dots i:nth-child(1){background:#ED6A5E}.dots i:nth-child(2){background:#F4BF50}.dots i:nth-child(3){background:#61C554}
+  .filename{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .filename b{color:var(--text);font-weight:500}
+  .chrome nav{margin-left:auto;display:flex;gap:20px}
+  .chrome nav a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s}
+  .chrome nav a:hover{color:var(--blue)}
+  @media(max-width:720px){.chrome nav{display:none}}
+  .hero{padding:74px 0 56px}
+  .kicker{font-family:var(--mono);color:var(--blue);font-size:12.5px;letter-spacing:.04em}
+  .hero h1{font-size:clamp(33px,5.6vw,58px);line-height:1.05;letter-spacing:-.025em;font-weight:600;margin:20px 0 0;max-width:18ch}
+  .cursor-blink{display:inline-block;width:.5ch;background:var(--blue);color:transparent;margin-left:2px;animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .hero .lede{color:var(--muted);font-size:clamp(16px,2.1vw,19px);max-width:60ch;margin-top:22px;line-height:1.6}
+  .meta-row{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+  .meta-row span b{color:var(--muted);font-weight:400}
+  .meta-row a{color:var(--blue);text-decoration:none}
+  .term{margin-top:34px;border:1px solid var(--border);border-radius:12px;background:var(--surface);overflow:hidden}
+  .term-bar{padding:9px 16px;border-bottom:1px solid var(--border-soft);font-family:var(--mono);font-size:11.5px;color:var(--faint);background:var(--surface-2)}
+  .term-body{display:grid;grid-template-columns:repeat(3,1fr)}
+  .term-body .cell{padding:22px 22px}
+  .term-body .cell:not(:last-child){border-right:1px solid var(--border-soft)}
+  .term-body .big{font-family:var(--mono);font-size:clamp(21px,3vw,28px);font-weight:700;line-height:1}
+  .c-green{color:var(--green)}.c-blue{color:var(--blue)}.c-amber{color:var(--amber)}
+  .term-body .cap{color:var(--muted);font-size:13px;margin-top:10px;line-height:1.45}
+  @media(max-width:680px){.term-body{grid-template-columns:1fr}.term-body .cell:not(:last-child){border-right:none;border-bottom:1px solid var(--border-soft)}}
+  section{padding:56px 0;border-top:1px solid var(--border-soft)}
+  .eyebrow{font-family:var(--mono);color:var(--faint);font-size:12.5px;margin-bottom:16px}
+  .eyebrow b{color:var(--blue);font-weight:400}
+  h2{font-size:clamp(24px,3.4vw,34px);font-weight:600;letter-spacing:-.02em;line-height:1.12;max-width:22ch}
+  .lede2{color:var(--muted);max-width:62ch;margin-top:14px;font-size:17px}
+  .mandate{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start;margin-top:10px}
+  @media(max-width:820px){.mandate{grid-template-columns:1fr;gap:26px}}
+  .mandate p{font-size:18px;color:#CDD2DE;line-height:1.62}
+  .mandate p .hl{color:var(--text);border-bottom:1.5px solid var(--blue);padding-bottom:1px}
+  .comment{font-family:var(--mono);font-size:13px;color:var(--green);background:var(--surface);border:1px solid var(--border-soft);border-left:2px solid var(--green);border-radius:8px;padding:16px 18px;line-height:1.6}
+  .comment .c{color:var(--faint)}
+  .tabs{display:flex;gap:0;flex-wrap:wrap;margin:28px 0 0;border-bottom:1px solid var(--border)}
+  .tabs button{font-family:var(--mono);font-size:12.5px;color:var(--muted);background:transparent;border:none;border-bottom:2px solid transparent;padding:12px 18px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px}
+  .tabs button:hover{color:var(--text)}
+  .tabs button[aria-selected="true"]{color:var(--text);border-bottom-color:var(--blue)}
+  .tabs button .dot{width:6px;height:6px;border-radius:50%;background:var(--faint)}
+  .tabs button[aria-selected="true"] .dot{background:var(--blue)}
+  .panel{display:none;padding-top:26px;animation:fade .4s ease}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .phase-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:5px}
+  .phase-h .tag{font-family:var(--mono);color:var(--blue);font-size:13px}
+  .phase-h h3{font-size:clamp(21px,2.7vw,27px);font-weight:600;letter-spacing:-.01em}
+  .phase-goal{color:var(--muted);font-size:16.5px;max-width:60ch;margin-bottom:22px}
+  .moves{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  @media(max-width:720px){.moves{grid-template-columns:1fr}}
+  .move{background:var(--surface);border:1px solid var(--border-soft);border-radius:11px;padding:18px 20px;transition:border-color .2s,transform .2s}
+  .move:hover{border-color:var(--border);transform:translateY(-2px)}
+  .move h4{font-size:16px;font-weight:600;margin-bottom:7px}
+  .move h4::before{content:"› ";color:var(--blue)}
+  .move p{font-size:14px;color:var(--muted);line-height:1.55}
+  .addr{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .addr .l{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+  .chip{font-family:var(--mono);font-size:11.5px;color:var(--blue);background:rgba(122,162,247,.10);border:1px solid rgba(122,162,247,.22);border-radius:6px;padding:4px 10px}
+  .principles{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:8px}
+  @media(max-width:720px){.principles{grid-template-columns:1fr}}
+  .pr{background:var(--surface);border:1px solid var(--border-soft);border-radius:11px;padding:20px 22px}
+  .pr .n{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  .pr h4{font-size:16.5px;font-weight:600;margin:7px 0 6px}
+  .pr p{font-size:14.5px;color:var(--muted);line-height:1.55}
+  .fit{margin-top:24px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .fit-row{display:grid;grid-template-columns:.9fr 1.3fr}
+  .fit-row:not(:last-child){border-bottom:1px solid var(--border-soft)}
+  .fit-row .need{padding:18px 20px;background:var(--surface);border-right:1px solid var(--border-soft);display:flex;flex-direction:column;justify-content:center;gap:5px}
+  .fit-row .need .l{font-family:var(--mono);font-size:11px;color:var(--faint)}
+  .fit-row .need .t{font-size:15px;font-weight:600;color:var(--text);line-height:1.3}
+  .fit-row .have{padding:18px 20px;font-size:14.5px;color:var(--muted);line-height:1.55}
+  .fit-row .have b{color:var(--text);font-weight:600}
+  @media(max-width:720px){.fit-row{grid-template-columns:1fr}.fit-row .need{border-right:none;border-bottom:1px solid var(--border-soft)}}
+  footer{border-top:1px solid var(--border);padding:50px 0 60px;background:var(--surface)}
+  footer h3{font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-.01em;max-width:20ch}
+  .cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:20px}
+  .cta a{font-family:var(--mono);font-size:13px;text-decoration:none;padding:12px 20px;border-radius:8px;transition:all .2s}
+  .cta a.p{background:var(--blue);color:#0C0D12;font-weight:500}
+  .cta a.p:hover{background:#96B6F9}
+  .cta a.g{border:1px solid var(--border);color:var(--text)}
+  .cta a.g:hover{border-color:var(--blue);color:var(--blue)}
+  .fineprint{margin-top:38px;padding-top:20px;border-top:1px solid var(--border-soft);font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:1.7;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .fineprint .built b{color:var(--green);font-weight:400}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.panel{animation:none}.cursor-blink{animation:none}}
+</style>
+</head>
+<body>
+<div class="chrome">
+  <div class="chrome-in">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="filename"><b>deployment_plan.md</b> — Drew Sturgell</div>
+    <nav>
+      <a href="#mandate">// mandate</a>
+      <a href="#plan">// plan</a>
+      <a href="#operate">// operate</a>
+      <a href="#fit">// fit</a>
+      <a href="#contact">// contact</a>
+    </nav>
+  </div>
+</div>
+<main>
+  <section class="hero" style="border-top:none">
+    <div class="wrap">
+      <div class="kicker reveal">// prepared independently for Regional Director, AI Deployment</div>
+      <h1 class="reveal">Repeatable enterprise deployment, at Cursor speed.<span class="cursor-blink">▋</span></h1>
+      <p class="lede reveal">A proposed operating plan for the role: how I'd scale adoption quality and consistency across strategic enterprise accounts as demand accelerates, while protecting the speed, flexibility, and developer-first ethos that make Cursor win.</p>
+      <div class="meta-row reveal">
+        <span><b>by</b> Drew Sturgell</span>
+        <span><b>now</b> Head of AI Strategy &amp; Adoption, Cisco</span>
+        <span><b>@</b> <a href="mailto:Drew.L.Sturgell@gmail.com">Drew.L.Sturgell@gmail.com</a></span>
+      </div>
+      <div class="term reveal">
+        <div class="term-bar">~/track-record $ cat highlights.txt</div>
+        <div class="term-body">
+          <div class="cell"><div class="big c-green">10% &rarr; 90%</div><div class="cap">AI assistant adoption I drove, with no direct authority</div></div>
+          <div class="cell"><div class="big c-blue">~30 min/day</div><div class="cap">time given back to users, pushing toward a 30% reallocation</div></div>
+          <div class="cell"><div class="big c-amber">ships daily</div><div class="cap">hands-on with agentic tooling; built and deployed this page myself</div></div>
         </div>
-      </nav>
-    </header>
-
-    <main id="top">
-      <section class="hero-section" aria-labelledby="page-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Cursor application artifact</p>
-          <h1 id="page-title">Enterprise AI Deployment Readiness Diagnostic</h1>
-          <p class="hero-lede">
-            A practical assessment for leaders planning AI coding-tool adoption across enterprise engineering
-            organizations. The diagnostic focuses on adoption quality, workflow transformation, risk mitigation,
-            executive alignment, and measurable outcomes.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#diagnostic">Start diagnostic</a>
-            <a class="button button-secondary" href="#deployment-thinking">Read my approach</a>
-          </div>
-          <div class="hero-status-row" aria-label="Project emphasis">
-            <span>Business-side deployment</span>
-            <span>Developer workflow fluency</span>
-            <span>Account health lens</span>
-          </div>
+      </div>
+    </div>
+  </section>
+  <section id="mandate">
+    <div class="wrap">
+      <div class="eyebrow reveal">// 01 <b>the mandate, as I read it</b></div>
+      <div class="mandate">
+        <div class="reveal">
+          <h2>Codify what works, without slowing the ship.</h2>
+          <p style="margin-top:20px">As demand accelerates, the job is to turn Cursor's momentum into <span class="hl">repeatable, high-impact deployment outcomes</span> for strategic enterprise customers. That means leading a team of AI Deployment Managers, owning the post-sale experience end to end, and partnering with Sales and Field Engineering so customers realize measurable engineering and business value, all while <span class="hl">preserving the low-friction, developer-first ethos</span> that got Cursor here.</p>
         </div>
-
-        <aside class="deployment-panel" aria-label="Deployment operating model">
-          <div class="panel-topline">
-            <span>Deployment operating model</span>
-            <span>Independent project</span>
-          </div>
-          <div class="deployment-map" aria-hidden="true">
-            <span class="map-route route-a"></span>
-            <span class="map-route route-b"></span>
-            <span class="map-route route-c"></span>
-
-            <div class="map-node node-sponsor">
-              <span>01</span>
-              <strong>Executive sponsor</strong>
-              <small>Outcome narrative</small>
-            </div>
-            <div class="map-node node-dev">
-              <span>02</span>
-              <strong>Developers</strong>
-              <small>Trust and workflow fit</small>
-            </div>
-            <div class="map-node node-sdlc">
-              <span>03</span>
-              <strong>SDLC</strong>
-              <small>Policy, review, release</small>
-            </div>
-            <div class="map-node node-field">
-              <span>04</span>
-              <strong>Field loop</strong>
-              <small>Sales, FE, Product</small>
-            </div>
-            <div class="map-node node-outcome">
-              <span>05</span>
-              <strong>Business outcomes</strong>
-              <small>Measured expansion</small>
-            </div>
-          </div>
-          <div class="positioning-note">
-            <h2>Business-side AI deployment leadership, getting hands-on with developer workflows.</h2>
-            <p>
-              Built to reflect enterprise sales, renewals, operations, AI adoption, account health, and
-              business-side SDLC participation. This is not an official Cursor tool.
-            </p>
-          </div>
-        </aside>
-      </section>
-
-      <section id="diagnostic" class="diagnostic-section" aria-labelledby="diagnostic-title">
-        <div class="section-heading">
-          <p class="eyebrow">Interactive assessment</p>
-          <h2 id="diagnostic-title">Readiness diagnostic</h2>
-          <p>
-            Select the current state of an enterprise AI coding-tool rollout. The output turns the inputs into an
-            executive-ready deployment view with risks, mitigations, enablement priorities, and an action plan.
-          </p>
+        <div class="comment reveal">
+          <span class="c">/*</span><br>
+          The trap in a role like this is<br>
+          process for its own sake. Good<br>
+          deployment scales by codifying<br>
+          the patterns that already work,<br>
+          not by adding ceremony. Speed is<br>
+          a feature. I'd protect it.<br>
+          <span class="c">*/</span>
         </div>
-
-        <div class="workspace-grid">
-          <form id="diagnostic-form" class="diagnostic-form" aria-describedby="form-help">
-            <div class="form-titlebar">
-              <div>
-                <span>Account readiness intake</span>
-                <strong>Deployment system inputs</strong>
-              </div>
-              <p>Scoring rewards strong operating foundations and applies pressure when rollout complexity exceeds support capacity.</p>
-            </div>
-            <p id="form-help" class="form-help">
-              The model is intentionally simple enough for a live customer conversation, with outputs shaped for a
-              practical executive and field-team follow-up.
-            </p>
-
-            <fieldset>
-              <legend>Deployment context</legend>
-              <div class="field-grid">
-                <div class="field">
-                  <label for="team-size">Engineering team size</label>
-                  <select id="team-size" name="teamSize" required>
-                    <option value="small">1 to 50 developers</option>
-                    <option value="mid">51 to 250 developers</option>
-                    <option value="large">251 to 1,000 developers</option>
-                    <option value="enterprise">1,000+ developers</option>
-                  </select>
-                </div>
-
-                <div class="field">
-                  <label for="ai-maturity">Current AI coding-tool maturity</label>
-                  <select id="ai-maturity" name="aiMaturity" required>
-                    <option value="1">No formal usage yet</option>
-                    <option value="2">Ad hoc individual usage</option>
-                    <option value="3">Guided team pilot</option>
-                    <option value="4">Standardized across multiple teams</option>
-                    <option value="5">Measured and embedded in workflows</option>
-                  </select>
-                </div>
-
-                <div class="field">
-                  <label for="rollout-stage">Rollout stage</label>
-                  <select id="rollout-stage" name="rolloutStage" required>
-                    <option value="exploration">Exploration</option>
-                    <option value="pilot">Pilot</option>
-                    <option value="expansion">Expansion</option>
-                    <option value="scale">Enterprise scale</option>
-                  </select>
-                </div>
-
-                <div class="field">
-                  <label for="top-blocker">Top blocker</label>
-                  <select id="top-blocker" name="topBlocker" required>
-                    <option value="security">Security</option>
-                    <option value="adoption">Adoption</option>
-                    <option value="workflow">Workflow fit</option>
-                    <option value="executive">Executive alignment</option>
-                    <option value="measurement">Measurement</option>
-                    <option value="enablement">Enablement</option>
-                  </select>
-                </div>
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <legend>Operating readiness</legend>
-              <div class="range-grid">
-                <div class="range-field">
-                  <label for="sponsor-strength">
-                    Executive sponsor strength
-                    <span id="sponsor-strength-value" class="range-value">3</span>
-                  </label>
-                  <input
-                    id="sponsor-strength"
-                    name="sponsorStrength"
-                    type="range"
-                    min="1"
-                    max="5"
-                    value="3"
-                    aria-describedby="sponsor-strength-scale"
-                  />
-                  <div id="sponsor-strength-scale" class="scale-labels">
-                    <span>Weak</span><span>Strong</span>
-                  </div>
-                </div>
-
-                <div class="range-field">
-                  <label for="enablement-maturity">
-                    Developer enablement maturity
-                    <span id="enablement-maturity-value" class="range-value">3</span>
-                  </label>
-                  <input
-                    id="enablement-maturity"
-                    name="enablementMaturity"
-                    type="range"
-                    min="1"
-                    max="5"
-                    value="3"
-                    aria-describedby="enablement-maturity-scale"
-                  />
-                  <div id="enablement-maturity-scale" class="scale-labels">
-                    <span>Reactive</span><span>Programmatic</span>
-                  </div>
-                </div>
-
-                <div class="range-field">
-                  <label for="sdlc-integration">
-                    SDLC integration maturity
-                    <span id="sdlc-integration-value" class="range-value">3</span>
-                  </label>
-                  <input
-                    id="sdlc-integration"
-                    name="sdlcIntegration"
-                    type="range"
-                    min="1"
-                    max="5"
-                    value="3"
-                    aria-describedby="sdlc-integration-scale"
-                  />
-                  <div id="sdlc-integration-scale" class="scale-labels">
-                    <span>Separate</span><span>Embedded</span>
-                  </div>
-                </div>
-
-                <div class="range-field">
-                  <label for="change-readiness">
-                    Change management readiness
-                    <span id="change-readiness-value" class="range-value">3</span>
-                  </label>
-                  <input
-                    id="change-readiness"
-                    name="changeReadiness"
-                    type="range"
-                    min="1"
-                    max="5"
-                    value="3"
-                    aria-describedby="change-readiness-scale"
-                  />
-                  <div id="change-readiness-scale" class="scale-labels">
-                    <span>Informal</span><span>Managed</span>
-                  </div>
-                </div>
-
-                <div class="range-field">
-                  <label for="measurement-discipline">
-                    Measurement discipline
-                    <span id="measurement-discipline-value" class="range-value">3</span>
-                  </label>
-                  <input
-                    id="measurement-discipline"
-                    name="measurementDiscipline"
-                    type="range"
-                    min="1"
-                    max="5"
-                    value="3"
-                    aria-describedby="measurement-discipline-scale"
-                  />
-                  <div id="measurement-discipline-scale" class="scale-labels">
-                    <span>Undefined</span><span>Outcome-linked</span>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-
-            <div class="form-actions">
-              <button class="button button-primary" type="submit">Generate deployment plan</button>
-              <button class="button button-ghost" type="reset">Reset</button>
-            </div>
-          </form>
-
-          <aside class="readiness-card" aria-label="Readiness model">
-            <p class="panel-kicker">Readiness model</p>
-            <h3>What the diagnostic weighs</h3>
-            <ul class="check-list">
-              <li>Executive sponsorship and business narrative</li>
-              <li>Developer trust, enablement, and workflow fit</li>
-              <li>SDLC integration with security and governance</li>
-              <li>Measurement discipline and account health signals</li>
-              <li>Rollout complexity against operating maturity</li>
-            </ul>
-            <p class="fine-print">
-              This is a strategy tool, not a benchmark. It helps shape a deployment conversation and identify the
-              next best motion.
-            </p>
-            <div class="partner-loop" aria-label="Cross-functional partnership loop">
-              <span>Sales</span>
-              <span>Field Eng</span>
-              <span>Product</span>
-              <span>Engineering</span>
-            </div>
-          </aside>
-        </div>
-
-        <section id="results" class="results-section" aria-live="polite" hidden>
-          <div class="results-header">
-            <div>
-              <p class="eyebrow">Deployment output</p>
-              <h2>Your readiness profile</h2>
-            </div>
-            <div class="score-block" aria-label="Overall readiness score" id="score-block">
-              <span id="score-value">0</span>
-              <small>overall readiness</small>
-            </div>
+      </div>
+    </div>
+  </section>
+  <section id="plan">
+    <div class="wrap">
+      <div class="eyebrow reveal">// 02 <b>the first 90 days, then scale</b></div>
+      <h2 class="reveal">Learn the motion. Codify it. Scale the team.</h2>
+      <p class="lede2 reveal">High-agency and hands-on early, building the scalable operating model the whole time. Select a phase:</p>
+      <div class="tabs reveal" role="tablist" aria-label="Plan phases">
+        <button role="tab" aria-selected="true" data-p="p1"><span class="dot"></span>days_1_30</button>
+        <button role="tab" aria-selected="false" data-p="p2"><span class="dot"></span>days_31_60</button>
+        <button role="tab" aria-selected="false" data-p="p3"><span class="dot"></span>days_61_90</button>
+        <button role="tab" aria-selected="false" data-p="p4"><span class="dot"></span>quarter_2+</button>
+      </div>
+      <div class="reveal">
+        <div class="panel on" id="p1" role="tabpanel">
+          <div class="phase-h"><span class="tag">days 1-30</span><h3>Listen and ride along.</h3></div>
+          <p class="phase-goal">Understand the team and the motion before changing either. Establish what "good deployment" looks like and what's slowing it down.</p>
+          <div class="moves">
+            <div class="move"><h4>Meet the team</h4><p>1:1s with every AI Deployment Manager, plus Sales and Field Engineering, to understand the current motion, strengths, and friction.</p></div>
+            <div class="move"><h4>Ride live deployments</h4><p>Shadow active enterprise rollouts to see firsthand where time-to-value is won or lost, and what separates a great deployment from a stalled one.</p></div>
+            <div class="move"><h4>Baseline the signals</h4><p>Establish the metrics that matter: adoption and usage depth, account health, expansion signals, and deployment cycle time.</p></div>
+            <div class="move"><h4>Find the patterns</h4><p>Identify the rollout, prompt, and context-configuration practices already working, the raw material worth codifying.</p></div>
           </div>
-
-          <div class="result-console">
-            <div class="maturity-band">
-              <div>
-                <span class="label">Deployment maturity level</span>
-                <strong id="maturity-level">Pilot Ready</strong>
-              </div>
-              <div>
-                <span class="label">Recommended rollout motion</span>
-                <strong id="rollout-motion">Structured pilot</strong>
-              </div>
-            </div>
-            <div class="readiness-bars" aria-label="Readiness factor scores">
-              <div class="bar-row">
-                <span>AI maturity</span>
-                <div class="bar-track"><span id="bar-ai"></span></div>
-              </div>
-              <div class="bar-row">
-                <span>Sponsor</span>
-                <div class="bar-track"><span id="bar-sponsor"></span></div>
-              </div>
-              <div class="bar-row">
-                <span>Enablement</span>
-                <div class="bar-track"><span id="bar-enablement"></span></div>
-              </div>
-              <div class="bar-row">
-                <span>SDLC fit</span>
-                <div class="bar-track"><span id="bar-sdlc"></span></div>
-              </div>
-              <div class="bar-row">
-                <span>Measurement</span>
-                <div class="bar-track"><span id="bar-measurement"></span></div>
-              </div>
-            </div>
+          <div class="addr"><span class="l">addresses:</span><span class="chip">post-sale ownership</span><span class="chip">account health</span><span class="chip">team leadership</span></div>
+        </div>
+        <div class="panel" id="p2" role="tabpanel">
+          <div class="phase-h"><span class="tag">days 31-60</span><h3>Codify what works.</h3></div>
+          <p class="phase-goal">Turn the patterns into lightweight, repeatable playbooks that raise quality and consistency without adding friction.</p>
+          <div class="moves">
+            <div class="move"><h4>Deployment playbooks</h4><p>Codify rollout strategy, prompt design, context configuration, and internal enablement into lightweight, scalable guides that preserve speed.</p></div>
+            <div class="move"><h4>Health and risk model</h4><p>Define the account-health, usage, and risk signals that flag a deployment drifting, early enough for the team to act.</p></div>
+            <div class="move"><h4>Escalation path</h4><p>Stand up a clear escalation route for complex deployments and high-stakes enterprise accounts, with me as the backstop.</p></div>
+            <div class="move"><h4>Expansion motion</h4><p>Tie expansion-pipeline generation to demonstrated customer outcomes, so growth follows value, not pressure.</p></div>
           </div>
-
-          <div class="account-strip" aria-label="Selected account context">
-            <div>
-              <span class="label">Team scale</span>
-              <strong id="result-team-size">1 to 50 developers</strong>
-            </div>
-            <div>
-              <span class="label">Rollout stage</span>
-              <strong id="result-rollout-stage">Exploration</strong>
-            </div>
-            <div>
-              <span class="label">Primary constraint</span>
-              <strong id="result-blocker">Security</strong>
-            </div>
+          <div class="addr"><span class="l">addresses:</span><span class="chip">lightweight process</span><span class="chip">prompt + context best practices</span><span class="chip">risk mitigation</span></div>
+        </div>
+        <div class="panel" id="p3" role="tabpanel">
+          <div class="phase-h"><span class="tag">days 61-90</span><h3>Scale the team and the loop.</h3></div>
+          <p class="phase-goal">Operationalize coaching and the product feedback loop so quality holds as the team and customer base grow.</p>
+          <div class="moves">
+            <div class="move"><h4>Coaching cadence</h4><p>Onboarding, skill development, and a performance rhythm that levels up every AI Deployment Manager as demand scales.</p></div>
+            <div class="move"><h4>Field to Product loop</h4><p>Aggregate what enterprise developers need into structured input for Product, Engineering, and Marketing to influence roadmap and adoption.</p></div>
+            <div class="move"><h4>Seamless post-sale</h4><p>Tighten the handoff with Sales and Field Engineering so the post-sale experience feels like one team, not three.</p></div>
+            <div class="move"><h4>First scaled review</h4><p>Show the deltas: deployment quality, consistency, time-to-value, and expansion, and decide what to double down on.</p></div>
           </div>
-
-          <div class="results-grid">
-            <article class="result-card">
-              <h3>Top adoption risks</h3>
-              <ul id="risk-list"></ul>
-            </article>
-
-            <article class="result-card">
-              <h3>Risk mitigation plan</h3>
-              <ul id="mitigation-list"></ul>
-            </article>
-
-            <article class="result-card">
-              <h3>Success metrics</h3>
-              <ul id="metrics-list"></ul>
-            </article>
-
-            <article class="result-card">
-              <h3>Enablement plan</h3>
-              <ul id="enablement-list"></ul>
-            </article>
-
-            <article class="result-card result-card-wide">
-              <h3>Executive narrative</h3>
-              <p id="executive-narrative"></p>
-            </article>
-
-            <article class="result-card">
-              <h3>Expansion opportunities</h3>
-              <ul id="expansion-list"></ul>
-            </article>
-
-            <article class="result-card result-card-wide">
-              <h3>30/60/90-day action plan</h3>
-              <div class="timeline" id="timeline-plan"></div>
-            </article>
+          <div class="addr"><span class="l">addresses:</span><span class="chip">hire, lead, develop</span><span class="chip">cross-functional</span><span class="chip">roadmap influence</span></div>
+        </div>
+        <div class="panel" id="p4" role="tabpanel">
+          <div class="phase-h"><span class="tag">quarter 2+</span><h3>A repeatable, high-agency org.</h3></div>
+          <p class="phase-goal">From a working motion to a team and operating model that scales with demand, without losing what makes Cursor fast.</p>
+          <div class="moves">
+            <div class="move"><h4>Hire ahead of demand</h4><p>Recruit and develop AI Deployment Managers against a clear bar, so capacity scales with the enterprise pipeline.</p></div>
+            <div class="move"><h4>Value per account</h4><p>Make measurable engineering and business value the standard deliverable for every strategic account.</p></div>
+            <div class="move"><h4>Protect the ethos</h4><p>Keep the playbooks lightweight and the team scrappy and developer-first, even as process matures.</p></div>
+            <div class="move"><h4>Compound the loop</h4><p>Turn deployment learnings into product and enablement improvements that make the next rollout faster.</p></div>
           </div>
-        </section>
-      </section>
-
-      <section id="deployment-thinking" class="content-section" aria-labelledby="thinking-title">
-        <div class="section-heading">
-          <p class="eyebrow">Approach</p>
-          <h2 id="thinking-title">How I Think About AI Deployment</h2>
+          <div class="addr"><span class="l">addresses:</span><span class="chip">scale adoption quality</span><span class="chip">measurable value</span><span class="chip">developer-first at scale</span></div>
         </div>
-        <div class="prose-panel">
-          <p>
-            AI deployment is not just tool access. Adoption quality depends on workflow fit, developer trust,
-            enablement, measurement, and executive alignment. The best deployments connect technical usage to
-            business outcomes. Successful rollout requires tight feedback loops between users, field teams, product,
-            and leadership.
-          </p>
-          <p>
-            In practice, that means treating an AI coding-tool deployment as both a customer transformation motion and
-            an operating system for learning. Sales, Field Engineering, Product, Engineering, Security, and customer
-            leadership need a shared view of the use cases, blockers, adoption signals, and moments where workflow
-            design either creates trust or introduces friction.
-          </p>
+      </div>
+    </div>
+  </section>
+  <section id="operate">
+    <div class="wrap">
+      <div class="eyebrow reveal">// 03 <b>how I'd operate</b></div>
+      <h2 class="reveal">Principles, not bureaucracy.</h2>
+      <div class="principles">
+        <div class="pr reveal"><div class="n">principle_01</div><h4>Codify, don't ceremonialize</h4><p>Capture what already works and make it repeatable. The minute a process slows a deployment, it's a bug, not a feature.</p></div>
+        <div class="pr reveal"><div class="n">principle_02</div><h4>Developer empathy is earned</h4><p>I build with agentic tooling daily and shipped this page myself. I can whiteboard with developers, not just talk about them.</p></div>
+        <div class="pr reveal"><div class="n">principle_03</div><h4>High agency in ambiguity</h4><p>I drove org-wide AI adoption with no direct authority. I default to action, then refine with evidence.</p></div>
+        <div class="pr reveal"><div class="n">principle_04</div><h4>Two languages, one room</h4><p>Comfortable discussing context windows with an engineer and business value with a VP or CTO in the same conversation.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="fit">
+    <div class="wrap">
+      <div class="eyebrow reveal">// 04 <b>why me</b></div>
+      <h2 class="reveal">Your "you may be a fit if," line by line.</h2>
+      <div class="fit reveal">
+        <div class="fit-row">
+          <div class="need"><span class="l">// the role wants</span><span class="t">4+ yrs leading customer-facing technical teams</span></div>
+          <div class="have">Led and coached customer-facing consultant teams at Cisco and 10 direct reports at John Deere, and now lead AI strategy and adoption for a recurring-revenue org of <b>~1,500</b>.</div>
         </div>
-      </section>
-
-      <section id="why-built" class="content-section content-section-alt" aria-labelledby="why-title">
-        <div class="section-heading">
-          <p class="eyebrow">Project rationale</p>
-          <h2 id="why-title">Why I Built This</h2>
+        <div class="fit-row">
+          <div class="need"><span class="l">// the role wants</span><span class="t">SDLC, eng org, and AI-tooling fluency</span></div>
+          <div class="have">Work inside the IDE with Claude daily, contribute to the business-side <b>AI-assistant SDLC</b>, built and shipped my own AI app, and deployed this page via Claude Code and GitHub Pages.</div>
         </div>
-        <div class="prose-panel">
-          <p>
-            I built this as a lightweight project to demonstrate how I think about enterprise AI deployment and to get
-            closer to the developer workflow through hands-on AI-assisted development. My background is in enterprise
-            sales, renewals, operations, AI adoption, and business-side SDLC participation, and I am actively
-            developing my own app using AI tools.
-          </p>
-          <p>
-            The workflow behind this project is intentionally hands-on: VS Code, Claude, Codex, and vanilla app
-            development patterns, used from the perspective of a deployment leader who wants to understand how these
-            tools feel inside real developer work.
-          </p>
-          <p>
-            The project reflects how I would approach a customer conversation: diagnose readiness, identify adoption
-            risk, connect technical behavior to business outcomes, and turn the plan into a practical operating cadence.
-          </p>
+        <div class="fit-row">
+          <div class="need"><span class="l">// the role wants</span><span class="t">Drive adoption and expansion via outcomes</span></div>
+          <div class="have">Took an internal AI assistant from <b>~10% to ~90% adoption</b> with no direct authority, and ran a de-risk program that lifted renewal rates <b>50%+</b> while generating expansion pipeline.</div>
         </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>
-        Built by Drew Sturgell as an independent portfolio project. No proprietary employer or customer data is
-        included.
-      </p>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
+        <div class="fit-row">
+          <div class="need"><span class="l">// the role wants</span><span class="t">Executive presence, devs to VP/CTO</span></div>
+          <div class="have">Present to the <b>EVP</b> and partner with SVPs and VPs daily; the adoption work I lead was named <b>Project of the Year</b>. Equally at home whiteboarding prompts with builders.</div>
+        </div>
+        <div class="fit-row">
+          <div class="need"><span class="l">// the role wants</span><span class="t">High-agency, scrappy, cares about AI</span></div>
+          <div class="have">Drove change with influence over authority, hold an <b>M.S. in Corporate Innovation &amp; Entrepreneurship</b>, and build with these tools because I believe transforming how software is written matters.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="contact">
+  <div class="wrap">
+    <div class="eyebrow"><span class="mono" style="color:var(--blue)">// let's ship</span></div>
+    <h3>I'd love to help build the deployment org for what Cursor is becoming.</h3>
+    <div class="cta">
+      <a class="p" href="mailto:Drew.L.Sturgell@gmail.com">email_drew</a>
+      <a class="g" href="https://www.linkedin.com/in/drew-sturgell" target="_blank" rel="noopener">linkedin</a>
+      <a class="g" href="https://github.com/dsturge26" target="_blank" rel="noopener">github</a>
+    </div>
+    <div class="fineprint">
+      <span>Prepared independently by Drew Sturgell. Metrics reflect my work at Cisco; the plan is a proposed approach, not claimed Cursor results.</span>
+      <span class="built">$ built and deployed with <b>Claude Code</b> + GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+<script>
+  var tabs=document.querySelectorAll('.tabs button');
+  tabs.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      tabs.forEach(function(b){b.setAttribute('aria-selected','false')});
+      btn.setAttribute('aria-selected','true');
+      document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on')});
+      document.getElementById(btn.dataset.p).classList.add('on');
+    });
+  });
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(Math.min(i,6)*0.05)+'s';io.observe(el);});
+</script>
+</body>
 </html>
